@@ -1,13 +1,11 @@
 // src/index.ts
 import express from 'express';
 import { RandomUserResponse, User } from './types';
-
-
-
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
-
+app.use(cors());
 app.get('/api/users', async (_req, res) => {
   try {
     const resp = await fetch('https://randomuser.me/api/?results=10');
